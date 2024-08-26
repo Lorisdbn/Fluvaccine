@@ -1,4 +1,5 @@
-H1N1 and Seasonal Flu Vaccines Learning and Predictions
+## H1N1 and Seasonal Flu Vaccines Learning and Predictions
+
 Project Overview
 This project aims to predict whether individuals received the H1N1 and seasonal flu vaccines using a variety of machine learning models. Leveraging data from a public health survey conducted during the H1N1 pandemic, this project explores key factors influencing vaccination behavior, such as demographic information, health beliefs, and behaviors.
 
