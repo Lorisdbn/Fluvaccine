@@ -21,3 +21,9 @@ This project aims to predict whether individuals received the H1N1 and seasonal 
 - **TensorFlow**: Used for implementing and running the neural network models.
 - **Scikit-Learn**: Essential for data processing and model evaluation.
 - **Plotly**: For creating dynamic and interactive visualizations.
+
+## Data sources
+https://www.drivendata.org/competitions/66/flu-shot-learning/page/210/
+Data is provided courtesy of the United States National Center for Health Statistics.
+
+U.S. Department of Health and Human Services (DHHS). National Center for Health Statistics. The National 2009 H1N1 Flu Survey. Hyattsville, MD: Centers for Disease Control and Prevention, 2012.
