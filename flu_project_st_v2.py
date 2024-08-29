@@ -860,7 +860,7 @@ elif page == pages[4]:
     test_set_labels['seasonal_vaccine'] = (seasonal_probs > 0.5).astype(int)
     test_set_labels.to_csv("predictions.csv")
 # Display the predictions
-    with st.expander("### Predictions for test set"):
+    with st.expander("Predictions for test set"):
         st.markdown("""*1 = vaccinated ; 0 = not vaccinated*""")
         st.dataframe(test_set_labels)
 
