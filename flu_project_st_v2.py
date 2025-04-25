@@ -50,25 +50,23 @@ st.markdown(
         display: none;
     }
 
-    /* Increase font size */
+    /* Increase font size and set default text color */
     html, body, [class*="css"]  {
-        font-size: 18px !important; 
-    }
-    
-     /* Increase font size for headings specifically */
-    h1, h2, h3, h4, h5, h6 {
-        font-size: 35px !important; 
+        font-size: 18px !important;
+        color: black !important;  /* <<< AJOUT ICI */
     }
 
-    /* Set color for all headings */
+    /* Increase font size for headings specifically */
     h1, h2, h3, h4, h5, h6 {
-        color: #3A1078 !important; 
+        font-size: 35px !important; 
+        color: black !important;   /* <<< déjà bon ici */
         font-weight: bold !important; 
     }
 
     /* Increase font size and make bold inside expanders */
     .stExpander p, .stExpander div {
         font-size: 18px !important; 
+        color: black !important;  /* <<< AJOUT pour expander */
     }
 
     /* Change the color of the expander header */
@@ -85,6 +83,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
 
 @st.cache_resource
 def load_model(model_filename):
