@@ -62,6 +62,12 @@ st.markdown(
     .stExpander .st-expanderHeader:hover {
         color: #3A1078 !important;
     }
+    .stExpander {
+    border: 2px solid black !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+    }
+
     </style>
     """,
     unsafe_allow_html=True
@@ -382,22 +388,26 @@ The Kendall's Tau coefficient ranges from **-1 to 1**:
                                   values=h1n1_proportions,
                                   marker=dict(colors=['orange', 'green']),
                                   textinfo='label+percent',
-                                  textfont=dict(size=14, color='white', family='Arial Black'))])
+                                  textfont=dict(size=14, color='black', family='Arial Black'))])
 
         fig_h1n1_pie.update_layout(
         title='Proportion of H1N1 Vaccine',
         title_x=0.5, plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)'
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         )
 
         fig_seasonal_pie = go.Figure(data=[go.Pie(labels=seasonal_proportions.index.map({0: 'No', 1: 'Yes'}),
                                       values=seasonal_proportions,
                                       marker=dict(colors=['orange', 'green']),
                                       textinfo='label+percent',
-                                      textfont=dict(size=14, color='white', family='Arial Black'))])
+                                      textfont=dict(size=14, color='black', family='Arial Black'))])
 
         fig_seasonal_pie.update_layout(
         title='Proportion of Seasonal Vaccine',
         title_x=0.5, plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)'
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         )
 
         st.plotly_chart(fig_h1n1_pie)
@@ -453,6 +463,8 @@ elif page == pages[2]:
         xaxis=dict(title='Number of respondents', tickvals=[-500, -250, 0, 250, 500], ticktext=[500, 250, 0, 250, 500]),
         yaxis=dict(title='Age group'),
         bargap=0.1,
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
     # Display the chart in Streamlit
     with st.expander("Respondents demographic pyramid"):
@@ -484,6 +496,8 @@ elif page == pages[2]:
         xaxis=dict(title='Number of respondents', tickvals=[-500, -250, 0, 250, 500], ticktext=[500, 250, 0, 250, 500]),
         yaxis=dict(title='Race'),
         bargap=0.1,
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
     # Display the chart in Streamlit
     with st.expander("Respondents demographic pyramid based on ethnicity"):
@@ -508,8 +522,10 @@ elif page == pages[2]:
         title='Correlation of features with H1N1 vaccine',
         xaxis_title='Features',
         yaxis_title='H1N1 vaccine',
-        xaxis_tickangle=-45
-        , plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')   
+        xaxis_tickangle=-45,
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')), 
+        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')   
         # Heatmap for Seasonal Vaccine
         fig_seasonal = go.Figure(data=go.Heatmap(
         z=correlations_seasonal.values.T,
@@ -523,6 +539,8 @@ elif page == pages[2]:
         title='Correlation of features with seasonal vaccine',
         xaxis_title='Features',
         yaxis_title='Seasonal vaccine',
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         xaxis_tickangle=-45, plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)'
         )
         st.plotly_chart(fig_h1n1)
@@ -564,6 +582,8 @@ elif page == pages[2]:
         yaxis_title='Level of concern',
         barmode='stack',  # Use 'stack' for a stacked bar chart
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)',
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         legend_title_text='H1N1 vaccine status')
     # Display the chart in Streamlit
     with st.expander("Vaccination rate by level of concern about H1N1 virus"):
@@ -603,6 +623,8 @@ elif page == pages[2]:
         yaxis_title='Level of knowledge',
         barmode='stack',  # Use 'stack' for a stacked bar chart
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)',
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         legend_title_text='H1N1 vaccine status')
     # Display the chart in Streamlit
     with st.expander("Vaccination rate by level of knowledge about H1N1 virus"):
@@ -633,6 +655,8 @@ elif page == pages[2]:
         xaxis=dict(title='Age group'),
         yaxis=dict(title='Percentage of respondents'),
         barmode='stack',  # Use 'stack' to stack the bars on top of each other
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
     # Display the chart in Streamlit
     with st.expander("Distribution of H1N1 concern by age group"):
@@ -666,6 +690,8 @@ elif page == pages[2]:
         yaxis=dict(title='Vaccination rate'),
         yaxis_tickformat='%',
         barmode='group',
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
     # Display the chart in Streamlit
     with st.expander("Comparison of H1N1 Vaccination rates by sex and age group"):
@@ -692,6 +718,8 @@ elif page == pages[2]:
     fig.update_layout(
         xaxis=dict(title='Doctor recommendation for H1N1 vaccine'),
         yaxis=dict(title='Vaccination Rate (%)'),
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
     # Display the chart in Streamlit
     with st.expander("H1N1 vaccination rates based on doctor recommendation"):
@@ -723,6 +751,8 @@ elif page == pages[2]:
     fig.update_layout(
         xaxis=dict(title='Perceived H1N1 vaccine effectiveness'),
         yaxis=dict(title='Vaccination rate (%)'),
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
     # Display the chart in Streamlit
     with st.expander("H1N1 vaccination rates based on perceived vaccine effectiveness"):
@@ -869,6 +899,8 @@ elif page == pages[4]:
     fig.update_layout(
         xaxis_title='False Positive Rate (FPR)',
         yaxis_title='True Positive Rate (TPR)',
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),
         plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)',
         showlegend=True)
     # Display the chart in Streamlit
@@ -887,6 +919,8 @@ elif page == pages[4]:
                                   hole=.3, marker=dict(colors=['#c6f848', '#f4c536']))])
     fig_h1n1.update_layout(
     annotations=[dict(text='H1N1', x=0.5, y=0.5, font_size=18, showarrow=False)],
+    font=dict(color='black'),
+    legend=dict(font=dict(color='black')),
     plot_bgcolor='rgba(0,0,0,0)',
     paper_bgcolor='rgba(0,0,0,0)')
     # Create the pie chart for Seasonal vaccine
@@ -895,6 +929,8 @@ elif page == pages[4]:
                                       hole=.3, marker=dict(colors=['#c6f848', '#f4c536']))])
     fig_seasonal.update_layout(
     annotations=[dict(text='Seasonal', x=0.5, y=0.5, font_size=18, showarrow=False)],
+    font=dict(color='black'),
+    legend=dict(font=dict(color='black')),
     plot_bgcolor='rgba(0,0,0,0)',
     paper_bgcolor='rgba(0,0,0,0)')
 # Display the pie charts
