@@ -26,59 +26,42 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Background color for the main page */
+    /* Background color */
     .stApp {
         background-color: #fff2cc;
     }
-
-    /* Background color for the sidebar */
     [data-testid="stSidebar"] {
         background-color: #cfe2f3;
     }
-
-    /* Change top header bar color */
     header {
         background-color: transparent !important;
     }
-
-    /* Hide the menu icon and footer if needed */
-    .css-1rs6os {
+    /* Hide menu icon and footer */
+    .css-1rs6os, .css-1lsmgbg {
         display: none;
     }
-
-    .css-1lsmgbg {
-        display: none;
-    }
-
-    /* Increase font size and set default text color */
-    html, body, [class*="css"]  {
+    /* Increase font size and set font color globally */
+    html, body, [class*="css"], p, div {
         font-size: 18px !important;
-        color: black !important;  /* <<< AJOUT ICI */
+        color: black !important;
     }
-
-    /* Increase font size for headings specifically */
+    /* Headings */
     h1, h2, h3, h4, h5, h6 {
-        font-size: 35px !important; 
-        color: black !important;   /* <<< déjà bon ici */
-        font-weight: bold !important; 
+        font-size: 35px !important;
+        color: black !important;
+        font-weight: bold !important;
     }
-
-    /* Increase font size and make bold inside expanders */
+    /* Expander styling */
     .stExpander p, .stExpander div {
-        font-size: 18px !important; 
-        color: black !important;  /* <<< AJOUT pour expander */
+        font-size: 18px !important;
+        color: black !important;
     }
-
-    /* Change the color of the expander header */
     .stExpander .st-expanderHeader {
         color: #3A1078 !important;
     }
-
-    /* Maintain the same color when hovering over the expander header */
     .stExpander .st-expanderHeader:hover {
         color: #3A1078 !important;
     }
-
     </style>
     """,
     unsafe_allow_html=True
