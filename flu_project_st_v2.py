@@ -459,10 +459,24 @@ elif page == pages[2]:
     # Update the layout of the chart
     fig.update_layout(
         barmode='overlay',
-        xaxis=dict(title='Number of respondents', tickvals=[-500, -250, 0, 250, 500], ticktext=[500, 250, 0, 250, 500]),
-        yaxis=dict(title='Age group'),
+        xaxis=dict(
+            title='Number of respondents',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black'),
+            tickvals=[-500, -250, 0, 250, 500],
+            ticktext=[500, 250, 0, 250, 500]
+        ),
+        yaxis=dict(
+            title='Age group',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte global en noir
         bargap=0.1,
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        plot_bgcolor='white',      # Fond du plot en blanc
+        paper_bgcolor='white'      # Fond du papier en blanc
+    )
+
     # Display the chart in Streamlit
     with st.expander("Respondents demographic pyramid"):
         st.plotly_chart(fig)
