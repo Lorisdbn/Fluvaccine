@@ -11,9 +11,7 @@ import scipy.stats as stats
 import plotly.express as px
 from sklearn.metrics import roc_curve, auc
 
-warnings.filterwarnings('ignore', category=UserWarning, append=True)
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
+# ⚡ Première commande obligatoire
 st.set_page_config(
     page_title="H1N1 and Seasonal Flu Vaccines",
     page_icon="💉",
@@ -21,18 +19,11 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# CSS Global
-
-# Force Streamlit en mode clair sans passer par le menu utilisateur
-st.set_page_config(page_title="Flu Project", layout="wide", initial_sidebar_state="expanded")
+# 🎨 CSS Styling : Fond jaune, texte noir, contour noir des expanders
 st.markdown(
     """
     <style>
-    body {
-        background-color: #fff2cc !important;
-        color: black !important;
-    }
-    .stApp {
+    html, body, [class*="css"] {
         background-color: #fff2cc !important;
         color: black !important;
     }
@@ -40,11 +31,11 @@ st.markdown(
         background-color: #cfe2f3 !important;
         color: black !important;
     }
-    .css-18ni7ap, .css-1d391kg {
-        background-color: #fff2cc !important;
+    h1, h2, h3, h4, h5, h6 {
         color: black !important;
+        font-weight: bold !important;
     }
-    h1, h2, h3, h4, h5, h6, p, span, div {
+    p, div, label, span {
         color: black !important;
     }
     .stExpander {
@@ -52,20 +43,22 @@ st.markdown(
         border-radius: 8px;
         padding: 10px;
     }
-    .stExpanderHeader {
+    .stExpander > div > div {
         color: black !important;
     }
-    /* Plotly charts background */
-    .js-plotly-plot .plotly {
-        background-color: #fff2cc !important;
+    .st-expanderHeader {
+        color: black !important;
+    }
+    .st-expanderHeader:hover {
+        color: #3A1078 !important; /* Hover effect violet */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# ===== Functions =====
 
-# Function to load models
 @st.cache_resource
 def load_model(model_filename):
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -78,11 +71,6 @@ def load_model(model_filename):
         st.error(f"Model {model_filename} not found.")
         return None
 
-# Load models
-h1n1_model = load_model('h1n1_vaccine_neuronalmodel.pkl')
-seasonal_model = load_model('seasonal_vaccine_neuronalmodel.pkl')
-
-# Function to load data
 @st.cache_data
 def load_csv(file_name):
     try:
@@ -91,7 +79,22 @@ def load_csv(file_name):
         st.error(f"File {file_name} not found.")
         return None
 
-# Load datasets
+def apply_plotly_style(fig):
+    fig.update_layout(
+        font=dict(color="black"),
+        legend=dict(font=dict(color="black")),
+        xaxis=dict(titlefont=dict(color="black"), tickfont=dict(color="black")),
+        yaxis=dict(titlefont=dict(color="black"), tickfont=dict(color="black")),
+        plot_bgcolor="white",
+        paper_bgcolor="white"
+    )
+    return fig
+
+# ===== Load models =====
+h1n1_model = load_model('h1n1_vaccine_neuronalmodel.pkl')
+seasonal_model = load_model('seasonal_vaccine_neuronalmodel.pkl')
+
+# ===== Load datasets =====
 script_dir = os.path.dirname(os.path.abspath(__file__))
 datasets = {
     "test_features_processed": os.path.join(script_dir, "test_features_processed.csv"),
