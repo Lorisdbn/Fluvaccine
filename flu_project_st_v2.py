@@ -38,26 +38,32 @@ st.markdown(
     p, div, label, span {
         color: black !important;
     }
-    .stExpander {
+    /* --- Correctif Expander --- */
+    [data-testid="stExpander"] {
         border: 2px solid black !important;
-        border-radius: 8px;
+        border-radius: 8px !important;
         background-color: #fff2cc !important;
-        padding: 10px;
+        padding: 10px !important;
+        margin-bottom: 20px;
     }
-    .stExpander > div {
+    [data-testid="stExpander"] > div {
         background-color: #fff2cc !important;
         color: black !important;
+    }
+    [data-testid="stExpanderDetails"] {
+        background-color: #fff2cc !important;
     }
     .st-expanderHeader {
         color: black !important;
     }
     .st-expanderHeader:hover {
-        color: #3A1078 !important; /* Hover effect violet */
+        color: #3A1078 !important;
     }
     </style>
     """,
     unsafe_allow_html=True
 )
+
 
 # ===== Functions =====
 
