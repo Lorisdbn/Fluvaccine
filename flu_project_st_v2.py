@@ -600,11 +600,11 @@ elif page == pages[2]:
         paper_bgcolor='#fff2cc'  # Fond du "papier" jaune clair
     )
 
-        st.plotly_chart(fig_h1n1)
-        st.plotly_chart(fig_seasonal)
-        st.markdown("""
-        **The strongest correlations with both vaccines are observed with variables related to doctor recommendations and personal opinions about the vaccine’s effectiveness.**  
-        This highlights the importance of medical advice and public perception in vaccination decisions. Features like **education, employment status, and income tend to have weaker correlations with both vaccines**, suggesting that these demographic factors may play a less direct role in the decision to vaccinate (although they influence the opinion a patient may have about vaccination). **Public health strategies** aiming to increase vaccine uptake might focus on enhancing the role of healthcare providers in recommending vaccines and addressing public concerns or misconceptions about vaccine efficacy.""")
+    st.plotly_chart(fig_h1n1)
+    st.plotly_chart(fig_seasonal)
+    st.markdown("""
+    **The strongest correlations with both vaccines are observed with variables related to doctor recommendations and personal opinions about the vaccine’s effectiveness.**  
+    This highlights the importance of medical advice and public perception in vaccination decisions. Features like **education, employment status, and income tend to have weaker correlations with both vaccines**, suggesting that these demographic factors may play a less direct role in the decision to vaccinate (although they influence the opinion a patient may have about vaccination). **Public health strategies** aiming to increase vaccine uptake might focus on enhancing the role of healthcare providers in recommending vaccines and addressing public concerns or misconceptions about vaccine efficacy.""")
 
 # Plot the vaccination rate by level of concern about H1N1 virus
     concern_labels = {
