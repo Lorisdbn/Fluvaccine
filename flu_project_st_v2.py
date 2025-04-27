@@ -11,9 +11,8 @@ import scipy.stats as stats
 import plotly.express as px
 from sklearn.metrics import roc_curve, auc
 
-# Suppress TensorFlow and other warnings
 warnings.filterwarnings('ignore', category=UserWarning, append=True)
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow logging
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 st.set_page_config(
     page_title="H1N1 and Seasonal Flu Vaccines",
@@ -22,70 +21,46 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Custom CSS to change background color of the main page and sidebar
+# CSS Global
 st.markdown(
-    """
+    '''
     <style>
-    /* Background color for the main page */
-    .stApp {
-        background-color: #fff2cc;
+    /* Global text and background */
+    html, body, [class*="css"] {
+        color: black !important;
+        background-color: #fff2cc !important;
+        font-size: 18px !important;
     }
-
-    /* Background color for the sidebar */
+    /* Sidebar */
     [data-testid="stSidebar"] {
         background-color: #cfe2f3;
     }
-
-    /* Change top header bar color */
-    header {
-        background-color: transparent !important;
-    }
-
-    /* Hide the menu icon and footer if needed */
-    .css-1rs6os {
-        display: none;
-    }
-
-    .css-1lsmgbg {
-        display: none;
-    }
-
-    /* Increase font size */
-    html, body, [class*="css"]  {
-        font-size: 18px !important; 
-    }
-    
-     /* Increase font size for headings specifically */
+    /* Titles */
     h1, h2, h3, h4, h5, h6 {
-        font-size: 35px !important; 
+        color: black !important;
+        font-weight: bold;
     }
-
-    /* Set color for all headings */
-    h1, h2, h3, h4, h5, h6 {
-        color: #3A1078 !important; 
-        font-weight: bold !important; 
+    /* Expander border and text */
+    .stExpander {
+        border: 2px solid black !important;
+        border-radius: 8px;
+        padding: 10px;
     }
-
-    /* Increase font size and make bold inside expanders */
-    .stExpander p, .stExpander div {
-        font-size: 18px !important; 
+    .stExpander p, .stExpander div, .stExpander label {
+        color: black !important;
     }
-
-    /* Change the color of the expander header */
     .stExpander .st-expanderHeader {
-        color: #3A1078 !important;
+        color: black !important;
     }
-
-    /* Maintain the same color when hovering over the expander header */
     .stExpander .st-expanderHeader:hover {
-        color: #3A1078 !important;
+        color: black !important;
     }
-
     </style>
-    """,
+    ''',
     unsafe_allow_html=True
 )
 
+# Function to load models
 @st.cache_resource
 def load_model(model_filename):
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -94,24 +69,24 @@ def load_model(model_filename):
         with open(model_path, 'rb') as model_file:
             model = pickle.load(model_file)
         return model
-    except FileNotFoundError as e:
-        st.error(f"Error loading model '{model_filename}': {e}")
+    except FileNotFoundError:
+        st.error(f"Model {model_filename} not found.")
         return None
 
-# Load both models
+# Load models
 h1n1_model = load_model('h1n1_vaccine_neuronalmodel.pkl')
 seasonal_model = load_model('seasonal_vaccine_neuronalmodel.pkl')
 
-# Load datasets
+# Function to load data
 @st.cache_data
 def load_csv(file_name):
     try:
-        df = pd.read_csv(file_name)
-        return df
-    except FileNotFoundError as e:
-        st.error(f"Error loading file '{file_name}': {e}")
+        return pd.read_csv(file_name)
+    except FileNotFoundError:
+        st.error(f"File {file_name} not found.")
         return None
 
+# Load datasets
 script_dir = os.path.dirname(os.path.abspath(__file__))
 datasets = {
     "test_features_processed": os.path.join(script_dir, "test_features_processed.csv"),
