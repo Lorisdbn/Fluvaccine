@@ -693,11 +693,30 @@ elif page == pages[2]:
             textposition='auto'))
     # Customize the appearance of the chart
     fig.update_layout(
-        xaxis_title='Percentage of respondents',
-        yaxis_title='Level of knowledge',
-        barmode='stack',  # Use 'stack' for a stacked bar chart
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)',
-        legend_title_text='H1N1 vaccine status')
+        title=dict(
+            text='Knowledge levels about H1N1 vaccine',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Percentage of respondents',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='Level of knowledge',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte global noir
+        legend=dict(
+            title=dict(text='H1N1 vaccine status', font=dict(color='black')),
+            font=dict(color='black')
+        ),
+        barmode='stack',  # Empilement des barres
+        plot_bgcolor='#fff2cc',  # Fond jaune clair
+        paper_bgcolor='#fff2cc'  # Fond jaune clair aussi
+    )
+
     # Display the chart in Streamlit
     with st.expander("Vaccination rate by level of knowledge about H1N1 virus"):
         st.plotly_chart(fig)
@@ -724,10 +743,27 @@ elif page == pages[2]:
             marker_color=colors[concern_level]))
     # Update the layout of the chart
     fig.update_layout(
-        xaxis=dict(title='Age group'),
-        yaxis=dict(title='Percentage of respondents'),
-        barmode='stack',  # Use 'stack' to stack the bars on top of each other
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        title=dict(
+            text='Knowledge levels by age group',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Age group',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='Percentage of respondents',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Couleur générale noire
+        legend=dict(font=dict(color='black')),  # Légende noire (même si pas précisé ici)
+        barmode='stack',  # Empilage
+        plot_bgcolor='#fff2cc',  # Fond jaune clair
+        paper_bgcolor='#fff2cc'  # Fond jaune clair
+    )
+
     # Display the chart in Streamlit
     with st.expander("Distribution of H1N1 concern by age group"):
         st.plotly_chart(fig)
@@ -756,11 +792,28 @@ elif page == pages[2]:
         marker_color='orange'))
     # Update the layout of the chart
     fig.update_layout(
-        xaxis=dict(title='Age group'),
-        yaxis=dict(title='Vaccination rate'),
-        yaxis_tickformat='%',
-        barmode='group',
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        title=dict(
+            text='Vaccination rate by age group',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Age group',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='Vaccination rate',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black'),
+            tickformat='%'
+        ),
+        font=dict(color='black'),  # Couleur générale noire
+        legend=dict(font=dict(color='black')),  # Légende noire si présente
+        barmode='group',  # Barres côte à côte
+        plot_bgcolor='#fff2cc',  # Fond du graphe jaune clair
+        paper_bgcolor='#fff2cc'  # Fond du papier jaune clair
+    )
+
     # Display the chart in Streamlit
     with st.expander("Comparison of H1N1 Vaccination rates by sex and age group"):
         st.plotly_chart(fig)
@@ -784,9 +837,26 @@ elif page == pages[2]:
         marker_color=['red', 'green']))
     # Update the layout of the chart
     fig.update_layout(
-        xaxis=dict(title='Doctor recommendation for H1N1 vaccine'),
-        yaxis=dict(title='Vaccination Rate (%)'),
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        title=dict(
+            text='Impact of Doctor Recommendation on H1N1 Vaccination',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Doctor recommendation for H1N1 vaccine',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='Vaccination Rate (%)',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte général noir
+        legend=dict(font=dict(color='black')),  # Légende noire si présente
+        plot_bgcolor='#fff2cc',  # Fond jaune clair
+        paper_bgcolor='#fff2cc'  # Fond jaune clair
+    )
+
     # Display the chart in Streamlit
     with st.expander("H1N1 vaccination rates based on doctor recommendation"):
         st.plotly_chart(fig)
@@ -815,9 +885,26 @@ elif page == pages[2]:
         marker_color='lightblue'))
     # Update the layout of the chart
     fig.update_layout(
-        xaxis=dict(title='Perceived H1N1 vaccine effectiveness'),
-        yaxis=dict(title='Vaccination rate (%)'),
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+        title=dict(
+            text='Impact of Perceived H1N1 Vaccine Effectiveness on Vaccination',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Perceived H1N1 vaccine effectiveness',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='Vaccination rate (%)',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte général noir
+        legend=dict(font=dict(color='black')),  # Légende noire (par sécurité même si absente)
+        plot_bgcolor='#fff2cc',  # Fond du graphe jaune clair
+        paper_bgcolor='#fff2cc'  # Fond du papier jaune clair
+    )
+
     # Display the chart in Streamlit
     with st.expander("H1N1 vaccination rates based on perceived vaccine effectiveness"):
         st.plotly_chart(fig)
