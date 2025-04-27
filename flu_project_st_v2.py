@@ -548,11 +548,27 @@ elif page == pages[2]:
         hoverongaps=False
         ))
         fig_h1n1.update_layout(
-        title='Correlation of features with H1N1 vaccine',
-        xaxis_title='Features',
-        yaxis_title='H1N1 vaccine',
-        xaxis_tickangle=-45
-        , plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')   
+        title=dict(
+            text='Correlation of features with H1N1 vaccine',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Features',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black'),
+            tickangle=-45
+        ),
+        yaxis=dict(
+            title='H1N1 vaccine',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),  # Même si pas de legend ici, bon pour standardiser
+        plot_bgcolor='#fff2cc',
+        paper_bgcolor='#fff2cc'
+    )
+
         # Heatmap for Seasonal Vaccine
         fig_seasonal = go.Figure(data=go.Heatmap(
         z=correlations_seasonal.values.T,
