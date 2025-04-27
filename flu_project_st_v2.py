@@ -23,42 +23,46 @@ st.set_page_config(
 
 # CSS Global
 st.markdown(
-    '''
+    """
     <style>
-    /* Global text and background */
+    /* Force le mode clair sur toute l'app */
     html, body, [class*="css"] {
-        color: black !important;
         background-color: #fff2cc !important;
-        font-size: 18px !important;
+        color: black !important;
     }
     /* Sidebar */
     [data-testid="stSidebar"] {
-        background-color: #cfe2f3;
+        background-color: #cfe2f3 !important;
+        color: black !important;
     }
     /* Titles */
     h1, h2, h3, h4, h5, h6 {
         color: black !important;
         font-weight: bold;
     }
-    /* Expander border and text */
+    /* Expander border */
     .stExpander {
         border: 2px solid black !important;
         border-radius: 8px;
         padding: 10px;
-    }
-    .stExpander p, .stExpander div, .stExpander label {
         color: black !important;
     }
-    .stExpander .st-expanderHeader {
+    .stExpander > div > div {
         color: black !important;
     }
-    .stExpander .st-expanderHeader:hover {
+    /* Expander header */
+    .st-expanderHeader {
         color: black !important;
+    }
+    /* Graph background and fonts */
+    .js-plotly-plot .plotly {
+        background-color: white !important;
     }
     </style>
-    ''',
+    """,
     unsafe_allow_html=True
 )
+
 
 # Function to load models
 @st.cache_resource
