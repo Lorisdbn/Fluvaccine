@@ -503,12 +503,31 @@ elif page == pages[2]:
         orientation='h',
         marker=dict(color='orange')))
     # Update the layout of the chart
-    fig.update_layout(
-        barmode='overlay',
-        xaxis=dict(title='Number of respondents', tickvals=[-500, -250, 0, 250, 500], ticktext=[500, 250, 0, 250, 500]),
-        yaxis=dict(title='Race'),
-        bargap=0.1,
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)')
+fig.update_layout(
+    title=dict(
+        text="Respondents race pyramid",
+        font=dict(color='black')
+    ),
+    barmode='overlay',
+    xaxis=dict(
+        title='Number of respondents',
+        titlefont=dict(color='black'),
+        tickfont=dict(color='black'),
+        tickvals=[-500, -250, 0, 250, 500],
+        ticktext=[500, 250, 0, 250, 500]
+    ),
+    yaxis=dict(
+        title='Race',
+        titlefont=dict(color='black'),
+        tickfont=dict(color='black')
+    ),
+    font=dict(color='black'),  # Texte général noir
+    legend=dict(font=dict(color='black')),  # Légende en noir
+    bargap=0.1,
+    plot_bgcolor='#fff2cc',      # Fond du graphe en jaune clair
+    paper_bgcolor='#fff2cc'      # Fond du papier en jaune clair
+)
+
     # Display the chart in Streamlit
     with st.expander("Respondents demographic pyramid based on ethnicity"):
         st.plotly_chart(fig)
