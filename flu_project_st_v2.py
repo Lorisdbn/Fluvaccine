@@ -59,6 +59,10 @@ st.markdown(
     .st-expanderHeader:hover {
         color: #3A1078 !important;
     }
+     /* Barre du haut transparente */
+    [data-testid="stHeader"] {
+        background-color: rgba(0, 0, 0, 0) !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
