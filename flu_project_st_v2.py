@@ -22,41 +22,42 @@ st.set_page_config(
 )
 
 # CSS Global
+
+# Force Streamlit en mode clair sans passer par le menu utilisateur
+st.set_page_config(page_title="Flu Project", layout="wide", initial_sidebar_state="expanded")
 st.markdown(
     """
     <style>
-    /* Force le mode clair sur toute l'app */
-    html, body, [class*="css"] {
+    body {
         background-color: #fff2cc !important;
         color: black !important;
     }
-    /* Sidebar */
+    .stApp {
+        background-color: #fff2cc !important;
+        color: black !important;
+    }
     [data-testid="stSidebar"] {
         background-color: #cfe2f3 !important;
         color: black !important;
     }
-    /* Titles */
-    h1, h2, h3, h4, h5, h6 {
+    .css-18ni7ap, .css-1d391kg {
+        background-color: #fff2cc !important;
         color: black !important;
-        font-weight: bold;
     }
-    /* Expander border */
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        color: black !important;
+    }
     .stExpander {
         border: 2px solid black !important;
         border-radius: 8px;
         padding: 10px;
+    }
+    .stExpanderHeader {
         color: black !important;
     }
-    .stExpander > div > div {
-        color: black !important;
-    }
-    /* Expander header */
-    .st-expanderHeader {
-        color: black !important;
-    }
-    /* Graph background and fonts */
+    /* Plotly charts background */
     .js-plotly-plot .plotly {
-        background-color: white !important;
+        background-color: #fff2cc !important;
     }
     </style>
     """,
