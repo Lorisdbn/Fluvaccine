@@ -1048,10 +1048,27 @@ elif page == pages[4]:
                      line=dict(color='gray', dash='dash'),
                      showlegend=False))
     fig.update_layout(
-        xaxis_title='False Positive Rate (FPR)',
-        yaxis_title='True Positive Rate (TPR)',
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)',
-        showlegend=True)
+        title=dict(
+            text='ROC Curve',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='False Positive Rate (FPR)',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='True Positive Rate (TPR)',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte général en noir
+        legend=dict(font=dict(color='black')),  # Légende en noir
+        plot_bgcolor='#fff2cc',  # Fond jaune clair
+        paper_bgcolor='#fff2cc',  # Fond jaune clair
+        showlegend=True  # Légende activée
+    )
+
     # Display the chart in Streamlit
     with st.expander('Receiver Operating Characteristic (ROC) Curve'):
         st.markdown("""A ROC curve (Receiver Operating Characteristic) is a graph used to evaluate the performance of a binary classification model. It shows how well the model can distinguish between two classes, such as "vaccinated" and "not vaccinated.""")
@@ -1067,17 +1084,33 @@ elif page == pages[4]:
                                   values=[h1n1_vaccinated_count, h1n1_not_vaccinated_count],
                                   hole=.3, marker=dict(colors=['#c6f848', '#f4c536']))])
     fig_h1n1.update_layout(
-    annotations=[dict(text='H1N1', x=0.5, y=0.5, font_size=18, showarrow=False)],
-    plot_bgcolor='rgba(0,0,0,0)',
-    paper_bgcolor='rgba(0,0,0,0)')
+        annotations=[dict(
+            text='H1N1', 
+            x=0.5, 
+            y=0.5, 
+            font=dict(size=18, color='black'), 
+            showarrow=False
+        )],
+        plot_bgcolor='#fff2cc',  # Fond graphique
+        paper_bgcolor='#fff2cc'  # Fond du papier
+    )
+
     # Create the pie chart for Seasonal vaccine
     fig_seasonal = go.Figure(data=[go.Pie(labels=['Vaccinated', 'Not Vaccinated'], 
                                       values=[seasonal_vaccinated_count, seasonal_not_vaccinated_count],
                                       hole=.3, marker=dict(colors=['#c6f848', '#f4c536']))])
     fig_seasonal.update_layout(
-    annotations=[dict(text='Seasonal', x=0.5, y=0.5, font_size=18, showarrow=False)],
-    plot_bgcolor='rgba(0,0,0,0)',
-    paper_bgcolor='rgba(0,0,0,0)')
+        annotations=[dict(
+            text='Seasonal',
+            x=0.5,
+            y=0.5,
+            font=dict(size=18, color='black'),  # Correctement stylé en noir
+            showarrow=False
+        )],
+        plot_bgcolor='#fff2cc',  # Fond jaune clair
+        paper_bgcolor='#fff2cc'  # Fond jaune clair
+    )
+
 # Display the pie charts
     with st.expander("H1N1 vaccine distribution predictions"):
         st.plotly_chart(fig_h1n1)
