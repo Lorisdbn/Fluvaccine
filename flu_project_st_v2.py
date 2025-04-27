@@ -1085,15 +1085,34 @@ elif page == pages[4]:
                                   hole=.3, marker=dict(colors=['#c6f848', '#f4c536']))])
     fig_h1n1.update_layout(
         annotations=[dict(
-            text='H1N1', 
-            x=0.5, 
-            y=0.5, 
-            font=dict(size=18, color='black'), 
+            text='H1N1',
+            x=0.5,
+            y=0.5,
+            font=dict(size=18, color='black'),  # Annotation noire
             showarrow=False
         )],
-        plot_bgcolor='#fff2cc',  # Fond graphique
-        paper_bgcolor='#fff2cc'  # Fond du papier
+        title=dict(
+            text='H1N1 Vaccine Outcome',  # (Optionnel si tu veux un titre principal)
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte global noir
+        legend=dict(
+            font=dict(color='black')
+        ),
+        plot_bgcolor='#fff2cc',  # Fond graphique jaune clair
+        paper_bgcolor='#fff2cc'  # Fond papier jaune clair
     )
+
 
     # Create the pie chart for Seasonal vaccine
     fig_seasonal = go.Figure(data=[go.Pie(labels=['Vaccinated', 'Not Vaccinated'], 
@@ -1104,12 +1123,31 @@ elif page == pages[4]:
             text='Seasonal',
             x=0.5,
             y=0.5,
-            font=dict(size=18, color='black'),  # Correctement stylé en noir
+            font=dict(size=18, color='black'),  # Annotation noire
             showarrow=False
         )],
+        title=dict(
+            text='Seasonal Vaccine Outcome',  # Facultatif, tu peux adapter
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte général noir
+        legend=dict(
+            font=dict(color='black')
+        ),
         plot_bgcolor='#fff2cc',  # Fond jaune clair
         paper_bgcolor='#fff2cc'  # Fond jaune clair
     )
+
 
 # Display the pie charts
     with st.expander("H1N1 vaccine distribution predictions"):
