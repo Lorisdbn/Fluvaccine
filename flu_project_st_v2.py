@@ -578,12 +578,28 @@ elif page == pages[2]:
         zmin=-1, zmax=1,
         hoverongaps=False
         ))
-        fig_seasonal.update_layout(
-        title='Correlation of features with seasonal vaccine',
-        xaxis_title='Features',
-        yaxis_title='Seasonal vaccine',
-        xaxis_tickangle=-45, plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)'
-        )
+    fig_seasonal.update_layout(
+        title=dict(
+            text='Correlation of features with seasonal vaccine',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Features',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black'),
+            tickangle=-45
+        ),
+        yaxis=dict(
+            title='Seasonal vaccine',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')),  # Même si pas de légende ici, on garde pour uniformiser
+        plot_bgcolor='#fff2cc',  # Fond du graphique jaune clair
+        paper_bgcolor='#fff2cc'  # Fond du "papier" jaune clair
+    )
+
         st.plotly_chart(fig_h1n1)
         st.plotly_chart(fig_seasonal)
         st.markdown("""
@@ -619,11 +635,30 @@ elif page == pages[2]:
         ))
     # Customize the appearance of the chart
     fig.update_layout(
-        xaxis_title='Percentage of respondents',
-        yaxis_title='Level of concern',
-        barmode='stack',  # Use 'stack' for a stacked bar chart
-        plot_bgcolor='rgba(0, 0, 0, 0)', paper_bgcolor='rgba(0, 0, 0, 0)',
-        legend_title_text='H1N1 vaccine status')
+        title=dict(
+            text='Concern levels about H1N1 vaccine',
+            font=dict(color='black')
+        ),
+        xaxis=dict(
+            title='Percentage of respondents',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        yaxis=dict(
+            title='Level of concern',
+            titlefont=dict(color='black'),
+            tickfont=dict(color='black')
+        ),
+        font=dict(color='black'),  # Texte général en noir
+        legend=dict(
+            title=dict(text='H1N1 vaccine status', font=dict(color='black')),
+            font=dict(color='black')
+        ),
+        barmode='stack',  # Utilisation de stack comme prévu
+        plot_bgcolor='#fff2cc',  # Fond du graphique en jaune clair
+        paper_bgcolor='#fff2cc'  # Fond du "papier" en jaune clair
+    )
+
     # Display the chart in Streamlit
     with st.expander("Vaccination rate by level of concern about H1N1 virus"):
         st.plotly_chart(fig)
