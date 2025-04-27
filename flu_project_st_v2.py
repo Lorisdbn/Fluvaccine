@@ -23,7 +23,7 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    html, body, [class*="css"] {
+    html, body, .stApp {
         background-color: #fff2cc !important;
         color: black !important;
     }
@@ -41,9 +41,11 @@ st.markdown(
     .stExpander {
         border: 2px solid black !important;
         border-radius: 8px;
+        background-color: #fff2cc !important;
         padding: 10px;
     }
-    .stExpander > div > div {
+    .stExpander > div {
+        background-color: #fff2cc !important;
         color: black !important;
     }
     .st-expanderHeader {
@@ -394,7 +396,7 @@ The Kendall's Tau coefficient ranges from **-1 to 1**:
                                       values=seasonal_proportions,
                                       marker=dict(colors=['orange', 'green']),
                                       textinfo='label+percent',
-                                      textfont=dict(size=14, color='white', family='Arial Black'))])
+                                      textfont=dict(size=14, color='black', family='Arial Black'))])
 
         fig_seasonal_pie.update_layout(
         title='Proportion of Seasonal Vaccine',
