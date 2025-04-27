@@ -471,10 +471,11 @@ elif page == pages[2]:
             titlefont=dict(color='black'),
             tickfont=dict(color='black')
         ),
-        font=dict(color='black'),  # Texte global en noir
+        font=dict(color='black'),
+        legend=dict(font=dict(color='black')), # Texte global en noir
         bargap=0.1,
-        plot_bgcolor='white',      # Fond du plot en blanc
-        paper_bgcolor='white'      # Fond du papier en blanc
+        plot_bgcolor='#fff2cc',      
+        paper_bgcolor='#fff2cc'     
     )
 
     # Display the chart in Streamlit
